@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         PlayerIdle();
-        print(player_movements.Rb.velocity.x);
 
         if (input_controller.Up)
         {
