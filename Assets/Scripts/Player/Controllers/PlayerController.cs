@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 //gestisce l'interazione fra le varie classi del giocatore
@@ -22,14 +20,12 @@ public class PlayerController : MonoBehaviour
     {
         PlayerIdle();
 
+        if (input_controller.Crouch)
+            PlayerCrouching();
+
         if (input_controller.Up)
         {
-            //climb ladder
-        }
-
-        if (input_controller.Down)
-        {
-            // drop from ladder
+            //acces elevetors and doors
         }
 
         if (input_controller.Right)
@@ -46,15 +42,6 @@ public class PlayerController : MonoBehaviour
             //do action based on item
         }
 
-        if (input_controller.Crouch && input_controller.Right)
-            PlayerCrouching(Vector3.right);
-
-        if (input_controller.Crouch && input_controller.Left)
-            PlayerCrouching(Vector3.left);
-
-        if (input_controller.Crouch)
-            PlayerCrouching();
-
         if (input_controller.Menu)
         {
             //attiva menu
@@ -67,11 +54,15 @@ public class PlayerController : MonoBehaviour
 
         if (!player_movements.Ground)
             PlayerJump();
+
+        if (input_controller.Crouch)
+            PlayerCrouching();
     }
 
     //azioni effetuate quando il personaggio è fermo (idle)
     public void PlayerIdle()
     {
+        player_movements.Crouched = false;
         player_animations.Idle();
     }
 
@@ -79,7 +70,7 @@ public class PlayerController : MonoBehaviour
     public void PlayerWalk(Vector3 direction)
     {
         player_movements.MovePlayer(direction);
-        player_animations.Walking();
+        player_animations.Walking(player_movements.Rb.velocity.x);
     }
 
     //azioni effetuate quando il personaggio salta
@@ -89,16 +80,10 @@ public class PlayerController : MonoBehaviour
         player_animations.Jumping();
     }
 
-    //azioni effettuate quando il personaggio si accovaccia e cammina
-    public void PlayerCrouching(Vector3 direction)
-    {
-        player_movements.CrouchMovement(direction);
-        player_animations.Crouching();
-    }
-
     //azioni effettuate quando il personaggio si accovaccia
     public void PlayerCrouching()
     {
+        player_movements.Crouched = true;
         player_animations.Crouching();
     }
 }
