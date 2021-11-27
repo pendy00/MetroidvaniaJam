@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         PlayerIdle();
+        print(player_movements.Rb.velocity.x);
 
         if (input_controller.Up)
         {
@@ -38,12 +39,6 @@ public class PlayerController : MonoBehaviour
         {
             //do action based on item
         }
-
-        if (input_controller.Crouch && input_controller.Right)
-            PlayerCrouching(Vector3.right);
-
-        if (input_controller.Crouch && input_controller.Left)
-            PlayerCrouching(Vector3.left);
 
         if (input_controller.Crouch)
             PlayerCrouching();
@@ -72,7 +67,7 @@ public class PlayerController : MonoBehaviour
     public void PlayerWalk(Vector3 direction)
     {
         player_movements.MovePlayer(direction);
-        player_animations.Walking();
+        player_animations.Walking(player_movements.Rb.velocity.x);
     }
 
     //azioni effetuate quando il personaggio salta
@@ -82,16 +77,9 @@ public class PlayerController : MonoBehaviour
         player_animations.Jumping();
     }
 
-    //azioni effettuate quando il personaggio si accovaccia e cammina
-    public void PlayerCrouching(Vector3 direction)
-    {
-        player_movements.CrouchMovement(direction);
-        player_animations.Crouching();
-    }
-
     //azioni effettuate quando il personaggio si accovaccia
     public void PlayerCrouching()
     {
-        player_animations.Crouching();
+            player_animations.Crouching();
     }
 }

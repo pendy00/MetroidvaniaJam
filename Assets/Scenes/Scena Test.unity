@@ -726,7 +726,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b517fd699ea1342949ed7ec7ff2be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_speed: 79
+  player_walking_speed: 80
+  player_running_speed: 110
   jump_strength: 45
   crouched_speed: 70
 --- !u!4 &639366496
