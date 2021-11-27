@@ -55,5 +55,6 @@ public class PlayerAnimations : MonoBehaviour
         anim.SetBool(idle, false);
         anim.SetBool(walking, false);
         anim.SetBool(crouching, true);
+        anim.SetFloat(walking_speed, 0.0f);
     }
 }

@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     {
         PlayerIdle();
 
+        if (input_controller.Crouch)
+            PlayerCrouching();
+
         if (input_controller.Up)
         {
             //acces elevetors and doors
@@ -39,9 +42,6 @@ public class PlayerController : MonoBehaviour
             //do action based on item
         }
 
-        if (input_controller.Crouch)
-            PlayerCrouching();
-
         if (input_controller.Menu)
         {
             //attiva menu
@@ -54,11 +54,15 @@ public class PlayerController : MonoBehaviour
 
         if (!player_movements.Ground)
             PlayerJump();
+
+        if (input_controller.Crouch)
+            PlayerCrouching();
     }
 
     //azioni effetuate quando il personaggio è fermo (idle)
     public void PlayerIdle()
     {
+        player_movements.Crouched = false;
         player_animations.Idle();
     }
 
@@ -79,6 +83,7 @@ public class PlayerController : MonoBehaviour
     //azioni effettuate quando il personaggio si accovaccia
     public void PlayerCrouching()
     {
-            player_animations.Crouching();
+        player_movements.Crouched = true;
+        player_animations.Crouching();
     }
 }

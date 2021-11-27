@@ -727,9 +727,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_walking_speed: 80
-  player_running_speed: 110
+  player_running_speed: 130
   jump_strength: 45
-  crouched_speed: 70
 --- !u!4 &639366496
 Transform:
   m_ObjectHideFlags: 0
