@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //utilizzata per aumentare/diminuire ogni statistica del giocatore implementando anche controlli come la morte o il level up
-public class PlayerStatusController : MonoBehaviour
+public class PlayerAttributesController : MonoBehaviour
 {
     private Player player;
 

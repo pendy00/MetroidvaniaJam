@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class EquippedInventory : MonoBehaviour
 {
+    private List<GameItem> inventory;
+    private int selected_item;
+
+    public List<GameItem> Inventory_Items { get => inventory; set => inventory = value; }
+    public int Selected_Item { get => selected_item; set => selected_item = value; }
+
     //creare parametri per ogni elemento che compone l'equipaggiamento
-    public GameItem EquipItem(GameItem gi, Inventory i)
+    public Equipable EquipItem(Equipable gi)
     {
-        GameItem temp = null;
+        Equipable temp = null;
         switch (gi.Game_Item_Type)
         {
             //inserire caso per ogni elemento che compone l'equipaggiamento
@@ -17,7 +23,7 @@ public class EquippedInventory : MonoBehaviour
         return temp;
     }
 
-    public GameItem UnequipItem(GameItem gi, Inventory i)
+    public Equipable UnequipItem(Equipable gi)
     {
         switch (gi.Game_Item_Type)
         {
@@ -25,6 +31,18 @@ public class EquippedInventory : MonoBehaviour
                 break;
         }
 
-        return null;
+        return gi;
+    }
+
+    public void SelectNextItem()
+    {
+        if (selected_item <= inventory.Count)
+            selected_item++;
+    }
+
+    public void SelectPreviousItem()
+    {
+        if (selected_item > 0)
+            selected_item--;
     }
 }
