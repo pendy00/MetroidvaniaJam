@@ -11,26 +11,16 @@ public class Consumable : GameItem
     }
 
     //viene usata quando il personaggio usa un singolo elemento
-    public bool UseItemSingle()
+    public void UseItemSingle()
     {
         if(quantity > 0)
-        {
             quantity--;
-            return true;
-        }
-
-        return false;
     }
 
     //viene usata quando il personaggio usa più elementi
-    public bool UseItemMultiple(int value)
+    public void UseItemMultiple(int value)
     {
         if(quantity - value >= 0)
-        {
             quantity -= value;
-            return true;
-        }
-
-        return false;
     }
 }
