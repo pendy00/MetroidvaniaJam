@@ -10,7 +10,7 @@ public class PlayerUILevel : MonoBehaviour
         livello_text = GetComponent<Text>();
     }
 
-    public void UpdateLivello(int value)
+    public void UpdateLevel(int value)
     {
         livello_text.text = "Livello: " + value.ToString();
     }

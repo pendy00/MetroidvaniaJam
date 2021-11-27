@@ -10,6 +10,7 @@ public class PlayerLives : MonoBehaviour
     public int Vite_attuale { get => vite_attuale; set => vite_attuale = value; }
     public int Vite_massime { get => vite_massime; set => vite_massime = value; }
 
+    //eliminare dopo aver creato il game manager
     private void Awake()
     {
         ResetValues();
@@ -23,8 +24,6 @@ public class PlayerLives : MonoBehaviour
     {
         if(vite_attuale <= vite_massime && vite_attuale > 0)
             vite_attuale += value;
-
-        //if vite attuale <= 0 game over
     }
 
     public void UpdateViteMassime(int value)

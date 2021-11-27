@@ -22,7 +22,6 @@ public class PlayerCollisionController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        player_ui_controller.UpdateLifeBarUI(-10.0f);
-        player_ui_controller.UpdateExpBar(+10.0f);
+
     }
 }

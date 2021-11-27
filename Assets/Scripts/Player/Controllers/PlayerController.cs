@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 //gestisce l'interazione fra le varie classi del giocatore
@@ -24,12 +22,7 @@ public class PlayerController : MonoBehaviour
 
         if (input_controller.Up)
         {
-            //climb ladder
-        }
-
-        if (input_controller.Down)
-        {
-            // drop from ladder
+            //acces elevetors and doors
         }
 
         if (input_controller.Right)

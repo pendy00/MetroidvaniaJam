@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerLifeBar : MonoBehaviour
+public class PlayerLife : MonoBehaviour
 {
     public float energia_base;
     private float energia_attuale;

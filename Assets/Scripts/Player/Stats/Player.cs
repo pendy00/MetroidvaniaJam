@@ -8,9 +8,13 @@ public class Player : MonoBehaviour
 
     //le statistiche vengono impostate da valori base che vengono aumentati tramite calcoli derivati da livello ed equipaggiamento
     private int forza_base;
+    private int forza_base_delta;
     private int costituzione_base;
+    private int costituzione_base_delta;
     private int intelligenza_base;
+    private int intelligenza_base_delta;
     private int fortuna_base;
+    private int fortuna_base_delta;
 
     //statistiche per gestire il livello del giocatore
     private int livello_attuale;
@@ -30,4 +34,8 @@ public class Player : MonoBehaviour
     public int Costituzione { get => costituzione_base; set => costituzione_base = value; }
     public int Intelligenza { get => intelligenza_base; set => intelligenza_base = value; }
     public int Fortuna { get => fortuna_base; set => fortuna_base = value; }
+    public int Forza_base_delta { get => forza_base_delta; set => forza_base_delta = value; }
+    public int Costituzione_base_delta { get => costituzione_base_delta; set => costituzione_base_delta = value; }
+    public int Intelligenza_base_delta { get => intelligenza_base_delta; set => intelligenza_base_delta = value; }
+    public int Fortuna_base_delta { get => fortuna_base_delta; set => fortuna_base_delta = value; }
 }
