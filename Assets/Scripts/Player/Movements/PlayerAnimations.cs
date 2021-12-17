@@ -57,4 +57,25 @@ public class PlayerAnimations : MonoBehaviour
         anim.SetBool(crouching, true);
         anim.SetFloat(walking_speed, 0.0f);
     }
+
+    //attiva l'animazione attacco base
+    public void BaseAttack()
+    {
+        anim.SetBool(idle, false);
+        anim.SetBool(walking, false);
+        anim.SetBool(crouching, false);
+        anim.SetBool(base_attack, true);
+        anim.SetFloat(walking_speed, 0.0f);
+    }
+
+    //attiva l'animazione hit leggero
+    public void LightHit()
+    {
+        anim.SetBool(hit_light, true);
+        anim.SetBool(idle, false);
+        anim.SetBool(walking, false);
+        anim.SetBool(crouching, false);
+        anim.SetBool(base_attack, false);
+        anim.SetFloat(walking_speed, 0.0f);
+    }
 }

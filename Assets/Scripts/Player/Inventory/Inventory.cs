@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    /*
     private List<GameItem> inventory;
-    private int selected_item;
+    private int selected_item = 0;
 
     public List<GameItem> Inventory_Items { get => inventory; set => inventory = value; }
     public int Selected_Item { get => selected_item; set => selected_item = value; }
 
-    void Start()
+    private void Start()
     {
-        
+        inventory = new List<GameItem>();
     }
 
     public void AddItem(GameItem gi)
@@ -40,7 +41,7 @@ public class Inventory : MonoBehaviour
 
     public void SelectNextItem()
     {
-        if (selected_item < inventory.Count)
+        if (selected_item < inventory.Count - 1)
             selected_item++;
     }
 
@@ -49,4 +50,5 @@ public class Inventory : MonoBehaviour
         if (selected_item > 0)
             selected_item--;
     }
+    */
 }

@@ -4,17 +4,11 @@ public class PlayerLives : MonoBehaviour
 {
     public int vite_base;
     private int vite_attuale;
-    private int vite_massime;
+    public int vite_massime;
 
     public int Vite_base { get => vite_base; set => vite_base = value; }
     public int Vite_attuale { get => vite_attuale; set => vite_attuale = value; }
     public int Vite_massime { get => vite_massime; set => vite_massime = value; }
-
-    //eliminare dopo aver creato il game manager
-    private void Awake()
-    {
-        ResetValues();
-    }
 
     public void ResetValues()
     {
@@ -24,6 +18,9 @@ public class PlayerLives : MonoBehaviour
     {
         if(vite_attuale <= vite_massime && vite_attuale > 0)
             vite_attuale += value;
+
+        if (vite_attuale <= 0)
+            FindObjectOfType<GameStateController>().ChangeGameState(GameStateController.GAME_STATE.DEATH);
     }
 
     public void UpdateViteMassime(int value)
