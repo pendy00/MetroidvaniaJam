@@ -18,7 +18,7 @@ public class InputKeyboard : MonoBehaviour
             controller.Up = true;
 
         if (Input.GetKey(KeyCode.DownArrow))
-            controller.Down = true;
+            controller.Crouch = true;
 
         if (Input.GetKey(KeyCode.RightArrow))
             controller.Right = true;
@@ -27,21 +27,15 @@ public class InputKeyboard : MonoBehaviour
             controller.Left = true;
 
         if (Input.GetKey(KeyCode.Space))
-            controller.Jump = true;
-
-        if (Input.GetKey(KeyCode.A))
             controller.Action = true;
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.LeftControl))
             controller.Attack = true;
 
-        if (Input.GetKey(KeyCode.LeftControl))
-            controller.Crouch = true;
-
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.C))
             controller.Menu = true;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.X))
             controller.Cancel = true;
     }
 }

@@ -20,8 +20,6 @@ public class SavePointConfig
     public string Dati_Livello { get => PlayerPrefs.GetString(DatiLivelloKey); set => PlayerPrefs.SetString(DatiLivelloKey, value); }
     public string Dati_Inventario { get => PlayerPrefs.GetString(DatiInventarioKey); set => PlayerPrefs.SetString(DatiInventarioKey, value); }
 
-    
-
     //inizializza la configurazione delle chiavi in player prefs, se non esistono devono essere create
     public void InitConfig()
     {

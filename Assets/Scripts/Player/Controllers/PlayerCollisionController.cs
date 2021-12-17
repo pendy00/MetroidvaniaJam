@@ -2,26 +2,27 @@ using UnityEngine;
 
 public class PlayerCollisionController : MonoBehaviour
 {
-    private PlayerController player_controller;
-    private PlayerUIController player_ui_controller;
+    private EnemyController enemy;
 
-    private void Start()
-    {
-        player_controller = FindObjectOfType<PlayerController>();
-        player_ui_controller = FindObjectOfType<PlayerUIController>();
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.name.Contains("Enemy"))
+        {
+            enemy = collision.gameObject.GetComponent<EnemyController>();
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.name.Contains("Enemy"))
+        {
+            enemy = collision.gameObject.GetComponent<EnemyController>();
+        }
     }
 
-    private void OnMouseDown()
+    private void OnTriggerExit(Collider other)
     {
-
+        if (other.gameObject.name.Contains("Enemy"))
+            enemy = null;
     }
 }

@@ -19,18 +19,18 @@ public class SavePointDataFormatter
         string posizionex = giocatore.transform.position.x.ToString();
         string posizioney = giocatore.transform.position.y.ToString();
         string posizionez = giocatore.transform.position.z.ToString();
-        string energia_attuale = giocatore.Energia_attuale.ToString();
-        string energ_massima = giocatore.Energia_massima.ToString();
-        string forza = giocatore.Forza.ToString();
-        string fortuna = giocatore.Fortuna.ToString();
-        string livello_attuale = giocatore.Livello.ToString();
-        string esperienza_attuale = giocatore.Esperienza_attuale.ToString();
-        string esperienza_livello_successivo = giocatore.Esperienza_livello_successivo.ToString();
-        string vite = giocatore.Vite.ToString();
+        //string energia_attuale = giocatore.Punti_Ferita_Attuale.ToString();
+        //string energ_massima = giocatore.Punti_Ferita_Massimi.ToString();
+        //string forza = giocatore.Forza_attuale.ToString();
+        //string fortuna = giocatore.Fortuna_attuale.ToString();
+        //string livello_attuale = giocatore.Livello_attuale.ToString();
+        //string esperienza_attuale = giocatore.Esperienza_attuale.ToString();
+        //string esperienza_livello_successivo = giocatore.Esperienza_livello_successivo.ToString();
+        //string vite = giocatore.Vite.ToString();
 
         dati_giocatore += posizionex + delimitatore + posizioney + delimitatore + posizionez + delimitatore;
-        dati_giocatore += energia_attuale + delimitatore + energ_massima + delimitatore + forza + delimitatore + fortuna + delimitatore;
-        dati_giocatore += livello_attuale + delimitatore + esperienza_attuale + delimitatore + esperienza_livello_successivo + delimitatore + vite;
+        //dati_giocatore += energia_attuale + delimitatore + energ_massima + delimitatore + forza + delimitatore + fortuna + delimitatore;
+        //dati_giocatore += livello_attuale + delimitatore + esperienza_attuale + delimitatore + esperienza_livello_successivo + delimitatore + vite;
 
         return dati_giocatore;
     }
@@ -43,14 +43,14 @@ public class SavePointDataFormatter
         string[] reader = dati.Split(delimitatore);
 
         giocatore.transform.position = new Vector3(float.Parse(reader[0]), float.Parse(reader[1]), float.Parse(reader[2]));
-        giocatore.Energia_attuale = int.Parse(reader[3]);
-        giocatore.Energia_massima = int.Parse(reader[4]);
-        giocatore.Forza = int.Parse(reader[5]);
-        giocatore.Fortuna = int.Parse(reader[6]);
-        giocatore.Livello = int.Parse(reader[7]);
-        giocatore.Esperienza_attuale = int.Parse(reader[8]);
-        giocatore.Esperienza_livello_successivo = int.Parse(reader[9]);
-        giocatore.Vite = int.Parse(reader[10]);
+        //giocatore.Punti_Ferita_Attuale = int.Parse(reader[3]);
+        //giocatore.Punti_Ferita_Massimi = int.Parse(reader[4]);
+        //giocatore.Forza_attuale = int.Parse(reader[5]);
+        //giocatore.Fortuna_attuale = int.Parse(reader[6]);
+        //giocatore.Livello_attuale = int.Parse(reader[7]);
+        //giocatore.Esperienza_attuale = int.Parse(reader[8]);
+        //giocatore.Esperienza_livello_successivo = int.Parse(reader[9]);
+        //giocatore.Vite = int.Parse(reader[10]);
 
         return giocatore;
     }
