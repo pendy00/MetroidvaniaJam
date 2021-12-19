@@ -33,7 +33,7 @@ public class PlayerCombactSystem : MonoBehaviour
     {
         if (target != null)
         {
-            target.DamageEnemy(player_stats_controller.Player_Stats.Fortuna_attuale);
+            target.DamageEnemy(player_stats_controller.Player_Stats.Forza_attuale);
             whip.EnemyHit();
         }
     }

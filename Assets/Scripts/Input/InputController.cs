@@ -3,53 +3,28 @@ using UnityEngine;
 // classe che fa da tramite tra l'interazione del giocatore e gli elementi di scena
 public class InputController : MonoBehaviour
 {
-    // movimenti personaggio
-    private bool up;
-    private bool down;
-    private bool right;
-    private bool left;
+    PlayerInput player_input; //classe che gestisce lo stato del giocatore in base agli input dell'utente
+    InputDevice input_device; //classe che identifica il dispositivo di input attivo
 
-    //azioni personaggio
-    private bool jump;
-    private bool crouch;
-    private bool action;
-    private bool attack;
+    public PlayerInput Player_input { get => player_input; set => player_input = value; }
+    public InputDevice Input_device { get => input_device; set => input_device = value; }
 
-    // opzioni/menu
-    private bool menu;
-    private bool cancel;
-
-    public bool Up { get => up; set => up = value; }
-    public bool Down { get => down; set => down = value; }
-    public bool Right { get => right; set => right = value; }
-    public bool Left { get => left; set => left = value; }
-    public bool Jump { get => jump; set => jump = value; }
-    public bool Crouch { get => crouch; set => crouch = value; }
-    public bool Action { get => action; set => action = value; }
-    public bool Menu { get => menu; set => menu = value; }
-    public bool Cancel { get => cancel; set => cancel = value; }
-    public bool Attack { get => attack; set => attack = value; }
-
-    // metodi per resettare gli input ricevuti per evitare che alcuni valori restino bloccati
-    public void ResetAxis()
+    //inizializzazione classe input controller
+    public void Init(PlayerInput pi, InputDevice id)
     {
-        up = down = left = right = false;
+        player_input = pi;
+        input_device = id;
     }
 
-    public void ResetActions()
+    //prende input da dispositivio attivo ed aggiorna stato giocatore
+    public void Update()
     {
-        jump = crouch = action = attack = false;
+        input_device.GetUserInput(player_input);
     }
 
-    public void ResetOptions()
+    //cambia dispositivo input attivo
+    public void ChangeInputDevice(InputDevice new_input_device)
     {
-        menu = cancel = false;
-    }
-
-    public void ResetAllInputs()
-    {
-        ResetAxis();
-        ResetActions();
-        ResetOptions();
+        input_device = new_input_device;
     }
 }

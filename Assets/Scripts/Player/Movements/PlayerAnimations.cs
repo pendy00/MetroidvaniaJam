@@ -13,6 +13,7 @@ public class PlayerAnimations : MonoBehaviour
     private const string base_attack = "base attack";
     private const string grab_object = "grab object ground";
     private const string hit_light = "hit light";
+    private const string running = "running";
 
     private const string walking_speed = "walking speed";
 
@@ -31,15 +32,15 @@ public class PlayerAnimations : MonoBehaviour
         anim.SetBool(base_attack, false);
         anim.SetBool(hit_light, false);
         anim.SetBool(grab_object, false);
-        anim.SetFloat(walking_speed, 0.0f);
+        anim.SetBool(running, false);
     }
 
     //attiva l'animazione di camminata
-    public void Walking(float speed)
+    public void Walking()
     {
         anim.SetBool(idle, false);
         anim.SetBool(walking, true);
-        anim.SetFloat(walking_speed, Mathf.Abs(speed));
+        anim.SetBool(running, false);
     }
 
     //attiva l'animazione di salto
@@ -47,6 +48,8 @@ public class PlayerAnimations : MonoBehaviour
     {
         anim.SetBool(idle, false);
         anim.SetBool(jumping, true);
+        anim.SetBool(walking, false);
+        anim.SetBool(jumping, false);
     }
 
     //attiva l'animazione di accovacciamento
@@ -55,7 +58,6 @@ public class PlayerAnimations : MonoBehaviour
         anim.SetBool(idle, false);
         anim.SetBool(walking, false);
         anim.SetBool(crouching, true);
-        anim.SetFloat(walking_speed, 0.0f);
     }
 
     //attiva l'animazione attacco base
@@ -65,7 +67,7 @@ public class PlayerAnimations : MonoBehaviour
         anim.SetBool(walking, false);
         anim.SetBool(crouching, false);
         anim.SetBool(base_attack, true);
-        anim.SetFloat(walking_speed, 0.0f);
+        anim.SetBool(running, false);
     }
 
     //attiva l'animazione hit leggero
@@ -76,6 +78,13 @@ public class PlayerAnimations : MonoBehaviour
         anim.SetBool(walking, false);
         anim.SetBool(crouching, false);
         anim.SetBool(base_attack, false);
-        anim.SetFloat(walking_speed, 0.0f);
+        anim.SetBool(running, false);
+    }
+
+    public void Running()
+    {
+        anim.SetBool(idle, false);
+        anim.SetBool(walking, false);
+        anim.SetBool(running, true);
     }
 }

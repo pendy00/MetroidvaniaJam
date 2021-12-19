@@ -14,7 +14,7 @@ public class PlayerMenuController : MonoBehaviour
     }
     private void Update()
     {
-        if (input_controller.Cancel)
+        if (input_controller.Player_input.Cancel)
         {
             player_ui_stats.ShowUIStats(false);
             FindObjectOfType<GameStateController>().ChangeGameState(GameStateController.GAME_STATE.EXPLORING);

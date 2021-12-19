@@ -12,13 +12,8 @@ public abstract class EnemyMovements : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    public void Update()
-    {
-        if (rb.velocity.x != 0)
-            rb.gravityScale = 2.5f;
-        else
-            rb.gravityScale = 1.0f;
-    }
 
     public abstract void LookAtTarget(Transform target);
+
+    public abstract void MoveEnemy(Vector3 direction);
 }

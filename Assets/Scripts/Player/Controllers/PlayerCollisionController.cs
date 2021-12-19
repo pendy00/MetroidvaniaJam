@@ -2,27 +2,35 @@ using UnityEngine;
 
 public class PlayerCollisionController : MonoBehaviour
 {
-    private EnemyController enemy;
+    private GameItem item;
+    private GameItemInterfaces.Interactable interactable;
+
+    public GameItem Item { get => item; set => item = value; }
+    public GameItemInterfaces.Interactable Interactable { get => interactable; set => interactable = value; }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name.Contains("Enemy"))
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<GameItemInterfaces.Interactable>() != null)
         {
-            enemy = collision.gameObject.GetComponent<EnemyController>();
+            if (collision.gameObject.GetComponent<GameItemInterfaces.Interactable>())
+            {
+                interactable = collision.gameObject.GetComponent<GameItemInterfaces.Interactable>();
+            }
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Contains("Enemy"))
-        {
-            enemy = collision.gameObject.GetComponent<EnemyController>();
-        }
+        interactable = null;
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        if (other.gameObject.name.Contains("Enemy"))
-            enemy = null;
+        interactable = null;
     }
 }

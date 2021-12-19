@@ -8,9 +8,6 @@ public class Enemy1Animations : EnemyAnimations
     {
         anim.SetBool(idle, true);
         anim.SetBool(walking, false);
-        anim.SetBool(attack_punch, false);
-        anim.SetBool(attack_club, false);
-        anim.SetBool(hit, false);
         anim.SetBool(ko, false);
     }
 
@@ -18,19 +15,13 @@ public class Enemy1Animations : EnemyAnimations
     {
         anim.SetBool(idle, false);
         anim.SetBool(walking, true);
-        anim.SetBool(attack_punch, false);
-        anim.SetBool(attack_club, false);
-        anim.SetBool(hit, false);
-        anim.SetBool(ko, false);
     }
 
     public override void AttackPunch()
     {
         anim.SetBool(idle, false);
         anim.SetBool(walking, false);
-        anim.SetBool(attack_punch, true);
-        anim.SetBool(attack_club, false);
-        anim.SetBool(hit, false);
+        anim.SetTrigger(attack_punch);
         anim.SetBool(ko, false);
     }
 
@@ -38,9 +29,6 @@ public class Enemy1Animations : EnemyAnimations
     {
         anim.SetBool(idle, false);
         anim.SetBool(walking, false);
-        anim.SetBool(attack_punch, false);
-        anim.SetBool(attack_club, true);
-        anim.SetBool(hit, false);
         anim.SetBool(ko, false);
     }
 
@@ -48,28 +36,16 @@ public class Enemy1Animations : EnemyAnimations
     {
         anim.SetBool(idle, false);
         anim.SetBool(walking, false);
-        anim.SetBool(attack_punch, false);
-        anim.SetBool(attack_club, false);
-        anim.SetBool(hit, true);
+        anim.SetTrigger(hit);
         anim.SetBool(ko, false);
     }
 
-    public override void ResetHit()
-    {
-        Idle();
-    }
 
-    public void ResetPunch()
-    {
-        Idle();
-    }
+
     public override void KO()
     {
         anim.SetBool(idle, false);
         anim.SetBool(walking, false);
-        anim.SetBool(attack_punch, false);
-        anim.SetBool(attack_club, false);
-        anim.SetBool(hit, false);
         anim.SetBool(ko, true);
     }
 }
