@@ -1,25 +1,24 @@
-using System.Threading.Tasks;
+using System;
+using System.Collections;
+using UnityEngine;
 
 //timer utilizzato per evitare salvataggi ripetuti ogni update.
 public class SavePointTimer
 {
     //timer utilizzato per il calcolo del tempo trascorso
-    private float delay;
+    private int delay;
     //timer impostato a valore predefinito da inspector, indica il tempo minimo che deve trascorrere per poter effettuare un nuovo salvataggio
-    public float DELAY;
+    public int DELAY;
     
-    public async void EnableSavePoint(bool save)
+    public IEnumerator EnableSavePoint(bool save)
     {
         //inizializzaione del timer utilizzato per il calcolo
         delay = DELAY;
         //disabilitazione del salvataggio
         save = false;
         //decremento del timer
-        while(delay > 0)
-        {
-            delay--;
-            await Task.Delay(1000);
-        }
+        for (int i = DELAY; delay > 0; delay--)
+            yield return new WaitForSecondsRealtime(1);
 
         //reimpostazione del timer a valore predefinito
         delay = DELAY;

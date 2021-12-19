@@ -42,28 +42,29 @@ public class PlayerController : MonoBehaviour
     {
         PlayerIdle();
 
-        if (input_controller.Jump && player_movements.Ground)
+        if (input_controller.Player_input.Jump && player_movements.Ground)
         {
-            //PlayerJump();
+            PlayerJump();
         }
 
-        if (input_controller.Up)
+        if (input_controller.Player_input.Up)
         {
-            //acces elevetors and doors
+            if (player_collisions.Interactable != null)
+                player_collisions.Interactable.Action();
         }
 
-        if (input_controller.Right)
-            PlayerWalk(Vector3.right);
+        if (input_controller.Player_input.Right)
+            PlayerWalk(Vector3.right, input_controller.Player_input.Running);
 
-        if (input_controller.Left)
-            PlayerWalk(Vector3.left);
+        if (input_controller.Player_input.Left)
+            PlayerWalk(Vector3.left, input_controller.Player_input.Running);
 
-        if (input_controller.Crouch)
+        if (input_controller.Player_input.Crouch)
             PlayerCrouching(true);
         else
             PlayerCrouching(false);
 
-        if (input_controller.Attack)
+        if (input_controller.Player_input.Attack)
         {
             PlayerIdle();
             PlayerAttack();
@@ -72,19 +73,19 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (input_controller.Action)
+        if (input_controller.Player_input.Action)
         {
             //do action based on item
         }
 
-        if (input_controller.Menu)
+        if (input_controller.Player_input.Menu)
         {
             PlayerIdle();
             player_stats.ShowStatsCard(true);
             FindObjectOfType<GameStateController>().ChangeGameState(GameStateController.GAME_STATE.MENU);
         }
 
-        if (input_controller.Cancel)
+        if (input_controller.Player_input.Cancel)
         {
             player_stats.ShowStatsCard(false);
             FindObjectOfType<GameStateController>().ChangeGameState(GameStateController.GAME_STATE.EXPLORING);
@@ -99,15 +100,20 @@ public class PlayerController : MonoBehaviour
     }
 
     //azioni effettuate quando il personaggio cammina
-    public void PlayerWalk(Vector3 direction)
+    public void PlayerWalk(Vector3 direction, float running)
     {
-        player_movements.MovePlayer(direction);
-        player_animations.Walking(player_movements.Rb.velocity.x);
-        
-        if (Mathf.Abs(player_movements.Rb.velocity.x) < 1.5f)
+        if(running <= player_movements.Walk_to_speed_treshold)
+        {
+            player_animations.Walking();
             player_fx.PlayFX(PlayerFx.AUDIO_CLIP.WALKING);
+        }
         else
+        {
+            player_animations.Running();
             player_fx.PlayFX(PlayerFx.AUDIO_CLIP.RUNNING);
+        }
+
+        player_movements.MovePlayer(direction, running);
     }
 
     //azioni effetuate quando il personaggio salta

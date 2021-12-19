@@ -25,6 +25,5 @@ public abstract class EnemyAnimations : MonoBehaviour
     public abstract void AttackPunch();
     public abstract void AttackClub();
     public abstract void Hit();
-    public abstract void ResetHit();
     public abstract void KO();
 }

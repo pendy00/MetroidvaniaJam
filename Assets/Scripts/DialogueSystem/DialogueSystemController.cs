@@ -27,10 +27,10 @@ public class DialogueSystemController : MonoBehaviour
 
     private void Update()
     {
-        if (input_controller.Action && !dialogue_end && can_show_next)
+        if (input_controller.Player_input.Action && !dialogue_end && can_show_next)
             ShowNextText();
 
-        if(input_controller.Action && dialogue_end)
+        if(input_controller.Player_input.Action && dialogue_end)
         {
             //close all dialogue system and dialogue iteractions
             dialogue_ui.ShowUI(false);

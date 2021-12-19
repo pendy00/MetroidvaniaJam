@@ -17,6 +17,8 @@ public class SavePointController : MonoBehaviour
         save_point_timer = new SavePointTimer();
         save_point_config = new SavePointConfig();
         save_point_formatter = new SavePointDataFormatter();
+
+        is_save_enable = true;
     }
 
     //salva il gioco allo stato corrente

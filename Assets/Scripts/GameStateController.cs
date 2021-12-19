@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameStateController : MonoBehaviour
 {
-    public enum GAME_STATE { START_LEVEL, END_LEVEL, EXPLORING, DEATH, MENU, SAVE, LOAD, QUIT, NONE};
+    public enum GAME_STATE { START_LEVEL, END_LEVEL, EXPLORING, DEATH, MENU, SAVE, LOAD, QUIT, TRANSICTION, NONE};
     public GAME_STATE current_game_state = GAME_STATE.NONE;
 
     private List<MonoBehaviour> exploring_scripts;

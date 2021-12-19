@@ -12,8 +12,8 @@ public class PlayerMovements : MonoBehaviour
 
     public float player_walking_speed; // velocità di movimento
     public float player_running_speed; // velocità di corsa
+    private float walk_to_speed_treshold;
     public float jump_strength; // forza del salto
-    private bool is_jumping;
     public int fallback_light_strenght; // forza di rimbalzo quando il giocatore viene colpito
 
     public bool Ground { get => ground; set => ground = value; }
@@ -21,6 +21,7 @@ public class PlayerMovements : MonoBehaviour
     public Rigidbody2D Rb { get => rb; set => rb = value; }
 
     public Vector3 Direction { get => direction; set => direction = value; }
+    public float Walk_to_speed_treshold { get => walk_to_speed_treshold; set => walk_to_speed_treshold = value; }
 
     void Start()
     {
@@ -35,20 +36,18 @@ public class PlayerMovements : MonoBehaviour
             ground = false;
         }
         else
-        {
             ground = true;
-        } 
     }
 
     // muove il giocatore nella direzione dell'asse indicato
-    public void MovePlayer(Vector3 vector)
+    public void MovePlayer(Vector3 vector, float running)
     {
         if (!crouched)
         {
-            if (Mathf.Abs(rb.velocity.x) < 1.5f)
-                rb.AddForce(vector * player_walking_speed, ForceMode2D.Force);
+            if (running >= walk_to_speed_treshold)
+                rb.MovePosition(this.transform.position + (vector * player_running_speed * Time.fixedDeltaTime));
             else
-                rb.AddForce(vector * player_running_speed, ForceMode2D.Force);
+                rb.MovePosition(this.transform.position + (vector * player_walking_speed * Time.fixedDeltaTime));
         }
 
         this.transform.localScale = new Vector3(1.0f * vector.x, 1, 1);
@@ -65,11 +64,9 @@ public class PlayerMovements : MonoBehaviour
     //se su terreno il giocatore può saltare
     public async void Jump()
     {
-        is_jumping = true;
         await Task.Delay(300);
-        is_jumping = false;
 
-        if (ground && !is_jumping)
+        if (ground)
             rb.AddForce(Vector2.up * jump_strength, ForceMode2D.Impulse);
     }
 }

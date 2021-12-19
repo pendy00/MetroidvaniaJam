@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2129762394630867941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5, y: -3.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 2129762394832795559}
   - {fileID: 2129762395829945658}
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3c97ff6c2f1664a9806f59c43009e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walking_speed: 20
 --- !u!1 &2129762394832795558
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,5 +328,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 647c4c46940d2464bb1ccc5540f58a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patrol_distance: 5
   attack_distance: 1.5
   hit_delay: 1.2

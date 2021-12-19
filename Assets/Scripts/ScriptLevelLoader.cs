@@ -9,6 +9,8 @@ public class ScriptLevelLoader : MonoBehaviour
 {
     //Input Controller
     private InputController input_controller;
+    private InputKeyboard input_keyboard;
+    private PlayerInput player_input;
 
     //Player Scripts Reference
     private Player player;
@@ -58,6 +60,9 @@ public class ScriptLevelLoader : MonoBehaviour
     //Dialogue Controller
     private DialogueSystemController dialogue_system_controller;
 
+    //Doors
+    private DoorController door_controller;
+
     public PlayerController Player_controller { get => player_controller; set => player_controller = value; }
     public DialogueSystemController Dialogue_system_controller { get => dialogue_system_controller; set => dialogue_system_controller = value; }
     public PlayerInventoryController Player_inventory_controller { get => player_inventory_controller; set => player_inventory_controller = value; }
@@ -79,10 +84,12 @@ public class ScriptLevelLoader : MonoBehaviour
         LoadPlayerControllers();
         LoadPlayerMovements();
         LoadInventory();
+        LoadLevelItem();
 
         LevelLoaded();
     }
 
+    //Ricerca e caricamento script
     public T LoadScript<T>() where T : MonoBehaviour
     {
         T temp = null;
@@ -93,10 +100,16 @@ public class ScriptLevelLoader : MonoBehaviour
 
         return temp;
     }
+
+    //carica script input
     private void LoadInputController()
     {
         input_controller = LoadScript<InputController>();
+        input_keyboard = LoadScript<InputKeyboard>();
+        player_input = LoadScript<PlayerInput>();
     }
+
+    //carica script attributi e statistiche giocatore
     private void LoadPlayerStats()
     {
         player = LoadScript<Player>();
@@ -106,6 +119,8 @@ public class ScriptLevelLoader : MonoBehaviour
         player_live = LoadScript<PlayerLives>();
         player_level = LoadScript<PlayerLevel>();
     }
+
+    //carica script UI giocatore
     private void LoadPlayerUI()
     {
         player_ui_stats = LoadScript<PlayerUIStats>();
@@ -118,11 +133,15 @@ public class ScriptLevelLoader : MonoBehaviour
         player_ui_intelligenza = LoadScript<PlayerUIIntelligenza>();
         player_ui_fortuna = LoadScript<PlayerUIFortuna>();
     }
+
+    //carica script movimenti giocatore
     private void LoadPlayerMovements()
     {
         player_movements = LoadScript<PlayerMovements>();
         player_animations = LoadScript<PlayerAnimations>();
     }
+
+    //carica script controller giocatore
     private void LoadPlayerControllers()
     {
         player_controller = LoadScript<PlayerController>();
@@ -135,12 +154,14 @@ public class ScriptLevelLoader : MonoBehaviour
         player_menu_controller = LoadScript<PlayerMenuController>();
     }
 
+    //carica script inventario
     private void LoadInventory()
     {
         inventory = LoadScript<Inventory>();
         inventory_ui = LoadScript<InventoryUI>();
     }
 
+    //carica script dialogo
     private void LoadDialogueSystem()
     {
         dialogue_system = LoadScript<DialogueSystem>();
@@ -148,10 +169,15 @@ public class ScriptLevelLoader : MonoBehaviour
         Dialogue_system_controller = LoadScript<DialogueSystemController>();
     }
 
+    private void LoadLevelItem()
+    {
+        door_controller = LoadScript<DoorController>();
+    }
+
+    //inizializza i componenti del gioco e abilita attivazione livello
     public void LevelLoaded()
     {
-        if (input_controller == null)
-            print("NULL");
+        input_controller.Init(player_input, input_keyboard);
 
         player_controller.Init(input_controller, player_movements, player_animations, player_inventory_controller, player_stats_controller, player_collisione_controller, player_fx);
         player_controller.EquipWhip(whip);
@@ -168,6 +194,8 @@ public class ScriptLevelLoader : MonoBehaviour
 
         player_combact_system.Init(player_stats_controller);
         player_combact_system.EquipWhip(whip);
+
+        door_controller.Init(player.gameObject);
 
         level_loaded = true;
     }
