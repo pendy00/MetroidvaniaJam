@@ -329,5 +329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrol_distance: 5
-  attack_distance: 1.5
-  hit_delay: 1.2
+  can_patrol: 0
+  attack_distance: 1.7
+  hit_delay: 1.1

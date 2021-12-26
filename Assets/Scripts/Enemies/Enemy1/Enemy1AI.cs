@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy1AI : EnemyAI
 {
-    private PlayerController target;
+    private PlayerCombactController target;
     public float patrol_distance;
     private float patrol_start_position;
     public bool can_patrol;
@@ -38,7 +38,7 @@ public class Enemy1AI : EnemyAI
             if(Mathf.Abs(distance) <= attack_distance && hit_delay <= 0.0f)
             {
                 Enemy_controller.Enemy_animations.AttackPunch();
-                target.LightHit(Enemy_controller.Enemy.Forza);
+                //target.LightHit(Enemy_controller.Enemy.Forza);
                 hit_delay = HIT_DELAY;
             }
         }
@@ -51,7 +51,7 @@ public class Enemy1AI : EnemyAI
     {
         if (collision.gameObject.name.Equals("Player"))
         {
-            target = collision.gameObject.GetComponent<PlayerController>();
+            target = collision.gameObject.GetComponent<PlayerCombactController>();
             Enemy_controller.Enemy_animations.Idle();
             can_patrol = false;
         }
