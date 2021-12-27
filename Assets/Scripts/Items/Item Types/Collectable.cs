@@ -1,33 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public abstract class Collectable : MonoBehaviour
+using System;
+public class Collectable
 {
-    private Sprite sprite;
     public string item_name;
     public int item_quantity;
-    public int max_quantity;
 
-    public Sprite Sprite { get => sprite; set => sprite = value; }
+    public string Item_name { get => item_name; set => item_name = value; }
+    public int Item_quantity { get => item_quantity; set => item_quantity = value; }
 
-    private void Awake()
+    public Collectable() {  }
+
+    public Collectable(string item_name, int item_quantity)
     {
-        sprite = GetComponent<SpriteRenderer>().sprite;
-    }
-
-    public int AddQuantity(int value)
-    {
-        item_quantity += value;
-
-        if (item_quantity > max_quantity)
-            item_quantity = max_quantity;
-
-        return item_quantity;
-    }
-
-    public void Collect()
-    {
-        Destroy(this.gameObject);
+        this.item_name = item_name;
+        this.item_quantity = item_quantity;
     }
 }

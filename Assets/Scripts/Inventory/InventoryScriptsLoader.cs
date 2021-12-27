@@ -7,6 +7,7 @@ public class InventoryScriptsLoader : MonoBehaviour
     private Inventory inventory;
     private InventoryUI inventory_ui;
     private InventoryController inventory_controller;
+    private ItemLibrary item_library;
 
     public InventoryController Inventory_controller { get => inventory_controller; }
 
@@ -19,12 +20,13 @@ public class InventoryScriptsLoader : MonoBehaviour
         inventory = ScriptsLoader.LoadScript<Inventory>();
         inventory_ui = ScriptsLoader.LoadScript<InventoryUI>();
         inventory_controller = ScriptsLoader.LoadScript<InventoryController>();
+        item_library = ScriptsLoader.LoadScript<ItemLibrary>();
 
         InitInventory();
     }
 
     public void InitInventory()
     {
-        inventory_controller.Init(inventory, inventory_ui);
+        inventory_controller.Init(inventory, inventory_ui, item_library);
     }
 }

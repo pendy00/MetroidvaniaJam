@@ -4,86 +4,81 @@ using UnityEngine;
 
 public class PlayerMenuController : MonoBehaviour
 {
-    private bool menu_open;
-    private int tab_index;
-    public int menu_tabs;
     private PlayerInputController player_input_controller;
-    private PlayerAttributesController player_attributes_controller; //informations for stats tab
-    private PlayerInventoryController player_inventory_controller; //informations and interactions for inventory tab
-    //informations for equipped items tam
-    //informations for hospital status tab
+    private InventoryController inventory_controller;
+    private PlayerAttributesController player_attributes_controller;
+    private PlayerInvenoryMenu player_inventory_menu;
 
-    public void Init(PlayerInputController player_input_controller, PlayerAttributesController player_attributes_controller)
+    private int index;
+    private bool is_open;
+
+    public void Init(PlayerInputController player_input_controller, InventoryController inventory_controller,
+                        PlayerAttributesController player_attributes_controller, PlayerInvenoryMenu player_inventory_menu)
     {
         this.player_input_controller = player_input_controller;
+        this.inventory_controller = inventory_controller;
         this.player_attributes_controller = player_attributes_controller;
-
-        tab_index = 0;
+        this.player_inventory_menu = player_inventory_menu;
     }
 
-    private void Awake()
-    {
-        player_input_controller = FindObjectOfType<PlayerInputController>();
-        player_inventory_controller = FindObjectOfType<PlayerInventoryController>();
-    }
     private void Update()
     {
         if (player_input_controller.Player_input.Menu)
             OpenMenu();
 
-        if (player_input_controller.Player_input.Cancel)
+        if(player_input_controller.Player_input.Cancel)
             CloseMenu();
 
-        if (menu_open)
-        {
-            if (player_input_controller.Player_input.Right)
-                ChangeMenuTab(+1);
+        if (is_open && player_input_controller.Player_input.Right)
+            ChangeActiveTab(+1);
 
-            if (player_input_controller.Player_input.Left)
-                ChangeMenuTab(-1);
-        }
-    }
-
-    public void ChangeMenuTab(int value)
-    {
-        tab_index += value;
-        if (tab_index < 0)
-            tab_index = 0;
-
-        if (tab_index > menu_tabs)
-            tab_index = menu_tabs;
-
-        switch (tab_index)
-        {
-            case 0: //scheda situazione ospedale
-                break;
-            case 1:
-                break;
-            default:
-                break;
-        }
+        if (is_open && player_input_controller.Player_input.Left)
+            ChangeActiveTab(-1);
     }
 
     public void OpenMenu()
     {
         FindObjectOfType<GameStateController>().ChangeGameState(GameStateController.GAME_STATE.MENU);
-        menu_open = true;
-        player_inventory_controller.OpenInventoryTab();
-        //player_stats_controller.ShowStatsCard(true);
+        ShowActiveTab(true);
+        is_open = true;
     }
 
     public void CloseMenu()
     {
-        //hide menu
-        tab_index = 0;
-        menu_open = false;
-        player_inventory_controller.CloseInventoryTab();
-        //player_stats_controller.ShowStatsCard(false);
+        index = 0;
+        is_open = false;
+        ShowActiveTab(false);
         FindObjectOfType<GameStateController>().ChangeGameState(GameStateController.GAME_STATE.EXPLORING);
     }
 
-    public void ActivateMenuTab(bool value)
+    public void ChangeActiveTab(int value)
     {
+        index += value;
+        if (index < 0)
+            index = 0;
 
+        if (index > 1)
+            index = 1;
+
+        ShowActiveTab(true);
+    }
+
+    public void ShowActiveTab(bool value)
+    {
+        switch (index)
+        {
+            case 0:
+                player_attributes_controller.ShowAttributesUI(value);
+                inventory_controller.ShowInventory(false);
+                player_inventory_menu.Active_tab = false;
+                break;
+            case 1:
+                inventory_controller.ShowInventory(value);
+                player_inventory_menu.Active_tab = value;
+                player_attributes_controller.ShowAttributesUI(false);
+                break;
+            default:
+                break;
+        }
     }
 }

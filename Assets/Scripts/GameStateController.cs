@@ -17,6 +17,7 @@ public class GameStateController : MonoBehaviour
     private PlayerScriptsLoader player_scripts_loader;
     private MenuScriptsLoader menu_scripts_loader;
     private InteractionsScriptsLoader interaction_scripts_loader;
+    private AttributesScriptsLoader attributes_scripts_loader;
     
 
     public void Awake()
@@ -36,6 +37,9 @@ public class GameStateController : MonoBehaviour
         menu_scripts_loader = ScriptsLoader.LoadScript<MenuScriptsLoader>();
         menu_scripts_loader.LoadMenu();
 
+        attributes_scripts_loader = ScriptsLoader.LoadScript<AttributesScriptsLoader>();
+        attributes_scripts_loader.LoadAttributes();
+
         StartCoroutine(EnableStartingScripts());
     }
 
@@ -43,8 +47,6 @@ public class GameStateController : MonoBehaviour
     {
         LoadExploringScripts();
         EnableScripts(player_scripts, false);
-
-        LoadMenuScripts();
 
         yield return new WaitForFixedUpdate();
         ChangeGameState(GAME_STATE.START_LEVEL);
@@ -59,12 +61,6 @@ public class GameStateController : MonoBehaviour
         player_scripts.Add(player_scripts_loader.Player_fx_controller);
         player_scripts.Add(interaction_scripts_loader.Player_collect_controller);
         player_scripts.Add(interaction_scripts_loader.Player_interact_controller);
-    }
-
-    public void LoadMenuScripts()
-    {
-        menu_scripts = new List<MonoBehaviour>();
-        menu_scripts.Add(menu_scripts_loader.Player_menu_controller);
     }
 
     public void EnableScripts(List<MonoBehaviour> scripts, bool value)
