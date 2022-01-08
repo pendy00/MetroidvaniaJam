@@ -10,7 +10,7 @@ public class MenuScriptsLoader : MonoBehaviour
     private CollectableItemController collectable_item_controller;
     private ItemLibrary item_library;
 
-    private PlayerInvenoryMenu player_inventory_menu;
+    private PlayerInventoryMenu player_inventory_menu;
 
     private bool menu_loaded;
 
@@ -22,7 +22,7 @@ public class MenuScriptsLoader : MonoBehaviour
         player_menu_controller = ScriptsLoader.LoadScript<PlayerMenuController>();
         player_attributes_controller = ScriptsLoader.LoadScript<PlayerAttributesController>();
 
-        player_inventory_menu = ScriptsLoader.LoadScript<PlayerInvenoryMenu>();
+        player_inventory_menu = ScriptsLoader.LoadScript<PlayerInventoryMenu>();
         collectable_item_controller = ScriptsLoader.LoadScript<CollectableItemController>();
         item_library = ScriptsLoader.LoadScript<ItemLibrary>();
         InitMenu();

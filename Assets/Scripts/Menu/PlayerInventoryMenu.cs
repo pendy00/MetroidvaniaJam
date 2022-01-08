@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInvenoryMenu : MonoBehaviour
+public class PlayerInventoryMenu : MonoBehaviour
 {
     private PlayerInputController player_input_controller;
     private InventoryController inventory_controller;

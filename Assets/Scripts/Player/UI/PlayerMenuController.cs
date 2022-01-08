@@ -7,13 +7,13 @@ public class PlayerMenuController : MonoBehaviour
     private PlayerInputController player_input_controller;
     private InventoryController inventory_controller;
     private PlayerAttributesController player_attributes_controller;
-    private PlayerInvenoryMenu player_inventory_menu;
+    private PlayerInventoryMenu player_inventory_menu;
 
     private int index;
     private bool is_open;
 
     public void Init(PlayerInputController player_input_controller, InventoryController inventory_controller,
-                        PlayerAttributesController player_attributes_controller, PlayerInvenoryMenu player_inventory_menu)
+                        PlayerAttributesController player_attributes_controller, PlayerInventoryMenu player_inventory_menu)
     {
         this.player_input_controller = player_input_controller;
         this.inventory_controller = inventory_controller;
