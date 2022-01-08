@@ -67,7 +67,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -322,13 +322,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starting_life_points: 100
+  max_life_point: 1000
   starting_exp_point: 0
+  max_exp_point: 1000
   starting_level: 1
-  starting_lives: 10
-  strating_strenght: 50
-  starting_constitution: 50
-  starting_intelligence: 50
+  max_level: 100
+  starting_lives: 1
+  max_lives: 5
+  strating_strenght: 40
+  max_strenght: 100
+  starting_constitution: 20
+  max_constitution: 100
+  starting_intelligence: 80
+  max_intelligence: 100
   starting_luck: 50
+  max_luck: 100
 --- !u!114 &963477052823515185
 MonoBehaviour:
   m_ObjectHideFlags: 0

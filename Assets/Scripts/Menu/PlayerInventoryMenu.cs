@@ -31,7 +31,7 @@ public class PlayerInventoryMenu : MonoBehaviour
             if (player_input_controller.Player_input.Action)
             {
                 collectable_item_controller.UseItem(inventory_controller.Inventory.Items[index]);
-                inventory_controller.RemoveItem(inventory_controller.Inventory.Items[index], -1);
+                inventory_controller.RemoveItem(inventory_controller.Inventory.Items[index], 1);
                 index = 0;
             }
 
@@ -50,5 +50,7 @@ public class PlayerInventoryMenu : MonoBehaviour
             index = 0;
         if (index >= inventory_controller.Inventory.Item_count)
             index = inventory_controller.Inventory.Item_count - 1;
+
+        inventory_controller.UpdateCursorUI(index);
     }
 }

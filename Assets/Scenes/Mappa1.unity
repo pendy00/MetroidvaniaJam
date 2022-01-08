@@ -2521,10 +2521,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 594836369, guid: a5a9fd398495bcc40a1b4f1a6db08802, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4972250394061324767, guid: a5a9fd398495bcc40a1b4f1a6db08802, type: 3}
       propertyPath: m_Name
       value: Player Controller

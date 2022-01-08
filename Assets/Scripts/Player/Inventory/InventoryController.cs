@@ -51,4 +51,9 @@ public class InventoryController : MonoBehaviour
 
         inventory_ui.ShowInventoryUI(value);
     }
+
+    public void UpdateCursorUI(int index)
+    {
+        inventory_ui.UpdateCursorPosition(index);
+    }
 }

@@ -7,6 +7,7 @@ public class InventoryUI : MonoBehaviour
 {
     private Image background;
     private GridLayoutGroup grid;
+    public Image cursor;
     public GameObject item_ui;
 
     private void Awake()
@@ -51,6 +52,12 @@ public class InventoryUI : MonoBehaviour
     public void ShowInventoryUI(bool value)
     {
         background.color = value ? Color.white : Color.clear;
+        cursor.gameObject.SetActive(value);
         grid.gameObject.SetActive(value);
+    }
+
+    public void UpdateCursorPosition(int index)
+    {
+        cursor.rectTransform.position = grid.transform.GetChild(index).GetComponent<RectTransform>().position;
     }
 }

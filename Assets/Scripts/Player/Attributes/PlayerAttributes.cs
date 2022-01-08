@@ -44,4 +44,16 @@ public class PlayerAttributes
         this.intelligence.ChangeAttributeValue(intelligence);
         this.luck.ChangeAttributeValue(luck);
     }
+
+    public void UpdateAllMaxValues(int life_point, int exp_points, int level, int lives, int strenght, int constitution, int intelligence, int luck)
+    {
+        this.life_point.Max_value = life_point;
+        this.exp_point.Max_value = exp_points;
+        this.level.Max_value = level;
+        this.lives.Max_value = lives;
+        this.strenght.Max_value = strenght;
+        this.constitution.Max_value = constitution;
+        this.intelligence.Max_value = intelligence;
+        this.luck.Max_value = luck;
+    }
 }

@@ -21,7 +21,7 @@ public class InputKeyboard : InputDevice
         if (Input.GetKey(KeyCode.LeftShift))
             player_input.Jump = true;
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
             player_input.Action = true;
 
         if (Input.GetKey(KeyCode.LeftControl))
