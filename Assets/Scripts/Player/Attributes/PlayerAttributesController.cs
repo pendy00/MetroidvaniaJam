@@ -4,43 +4,51 @@ using UnityEngine;
 
 public class PlayerAttributesController : MonoBehaviour
 {
+    //private string life_points = "life points";
     public int starting_life_points;
+    //private string exp_points = "experience points";
     public int starting_exp_point;
+    //private string level = "level";
     public int starting_level;
+    //private string lives = "lives";
     public int starting_lives;
+    private string strenght = "strenght";
     public int strating_strenght;
+    private string constitution = "constitution";
     public int starting_constitution;
+    private string intelligence = "intelligence";
     public int starting_intelligence;
+    private string luck = "luck";
     public int starting_luck;
 
     private PlayerAttributes player_attributes;
-    //add ui
+    private PlayerAttributesUI player_attributes_ui;
+    private PlayerStatsUI player_stats_ui;
 
     public PlayerAttributes Player_attributes { get => player_attributes; set => player_attributes = value; }
+    public PlayerAttributesUI Player_attributes_ui { get => player_attributes_ui; set => player_attributes_ui = value; }
 
-    public void Init(PlayerAttributes player_attributes)
+    public void Init(PlayerAttributes player_attributes, PlayerAttributesUI player_attributes_ui, PlayerStatsUI player_stats_ui)
     {
         this.player_attributes = player_attributes;
 
-        this.player_attributes.Init();
+        player_attributes.Life_point.Max_value = starting_life_points; // set max life points in order to be able to update them
+        this.player_attributes.UpdateAllValues(starting_life_points, 0, starting_level, starting_lives, strating_strenght, starting_constitution, starting_intelligence, starting_luck);
+        this.player_attributes.Strenght.Attribute_name = strenght;
+        this.player_attributes.Constitution.Attribute_name = constitution;
+        this.player_attributes.Intelligence.Attribute_name = intelligence;
+        this.player_attributes.Luck.Attribute_name = luck;
 
-        player_attributes.Life_point.Current_value = player_attributes.Life_point.Max_value = starting_life_points;
-        player_attributes.Exp_point.Current_value = 0;
-        player_attributes.Exp_point.Max_value = starting_exp_point;
-        player_attributes.Level.Current_value = starting_level;
-        player_attributes.Lives.Current_value = starting_lives;
-        player_attributes.Strenght.Current_value = strating_strenght;
-        player_attributes.Constitution.Current_value = starting_constitution;
-        player_attributes.Intelligence.Current_value = starting_intelligence;
-        player_attributes.Luck.Current_value = starting_luck;
+        this.player_attributes_ui = player_attributes_ui;
+        this.player_stats_ui = player_stats_ui;
 
-        //update ui
+        player_stats_ui.UpdateAllUI(player_attributes.Life_point.Current_value, player_attributes.Exp_point.Current_value, player_attributes.Level.Current_value, player_attributes.Lives.Current_value);
     }
 
     public void UpdateLifePoint(int value)
     {
         player_attributes.Life_point.ChangeAttributeValue(value);
-        //update ui
+        player_stats_ui.UpdateLifeBeatUI(player_attributes.Life_point.Current_value);
         if(player_attributes.Life_point.Current_value <= 0)
         {
             UpdateLives(-1);
@@ -50,7 +58,7 @@ public class PlayerAttributesController : MonoBehaviour
     public void UpdateLives(int value)
     {
         player_attributes.Lives.ChangeAttributeValue(value);
-        //update ui
+        player_stats_ui.Lives_ui.UpdateVite(player_attributes.Lives.Current_value);
         if(player_attributes.Lives.Current_value > 0 && value < 0)
         {
             //respawn character
@@ -75,13 +83,12 @@ public class PlayerAttributesController : MonoBehaviour
             player_attributes.Exp_point.ChangeAttributeValue(value);
         }
 
-        //update ui
+        player_stats_ui.Exp_bar_ui.UpdateExpBar(player_attributes.Exp_point.Current_value);
     }
 
     public void LevelUp()
     {
         player_attributes.Level.ChangeAttributeValue(+1);
-        //update ui
 
         int current_level = player_attributes.Level.Current_value;
 
@@ -95,10 +102,18 @@ public class PlayerAttributesController : MonoBehaviour
         player_attributes.Constitution.Current_value = LevelUpAttribute(player_attributes.Constitution) + current_level;
         player_attributes.Intelligence.Current_value = LevelUpAttribute(player_attributes.Intelligence) + current_level;
         player_attributes.Luck.Current_value = LevelUpAttribute(player_attributes.Luck) + current_level;
+
+        player_stats_ui.UpdateAllUI(player_attributes.Life_point.Current_value, player_attributes.Exp_point.Current_value,
+                                    player_attributes.Level.Current_value, player_attributes.Lives.Current_value);
     }
 
     private int LevelUpAttribute(Attribute attribute)
     {
         return attribute.Base_value + Random.Range(-attribute.Delta_value, attribute.Delta_value + 1);
+    }
+
+    public void ShowAttributesUI(bool value)
+    {
+        player_attributes_ui.ShowUIStats(value, player_attributes.Strenght, player_attributes.Constitution, player_attributes.Intelligence, player_attributes.Luck);
     }
 }

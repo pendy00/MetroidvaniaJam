@@ -4,8 +4,4 @@ using UnityEngine;
 
 public class SpecialItem : Collectable
 {
-    public void Action()
-    {
-
-    }
 }

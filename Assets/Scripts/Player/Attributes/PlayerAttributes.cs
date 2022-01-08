@@ -32,4 +32,16 @@ public class PlayerAttributes
         intelligence = new Attribute();
         luck = new Attribute();
     }
+
+    public void UpdateAllValues(int life_point, int exp_points, int level, int lives, int strenght, int constitution, int intelligence, int luck)
+    {
+        this.life_point.ChangeAttributeValue(life_point);
+        this.exp_point.ChangeAttributeValue(exp_points);
+        this.level.ChangeAttributeValue(level);
+        this.lives.ChangeAttributeValue(lives);
+        this.strenght.ChangeAttributeValue(strenght);
+        this.constitution.ChangeAttributeValue(constitution);
+        this.intelligence.ChangeAttributeValue(intelligence);
+        this.luck.ChangeAttributeValue(luck);
+    }
 }
