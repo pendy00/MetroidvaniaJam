@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// load and init all the player's required script to work properly
 public class PlayerScriptsLoader : MonoBehaviour
 {
     private PlayerInput player_input;
@@ -15,16 +16,12 @@ public class PlayerScriptsLoader : MonoBehaviour
     private PlayerMovementsController player_movements_controller;
     private PlayerFXController player_fx_controller;
     private PlayerAnimationsController player_animations_controller;
-    
 
-    private bool player_loaded;
-
-    public bool Player_loaded { get => player_loaded; set => player_loaded = value; }
-    public PlayerInputController Player_input_controller { get => player_input_controller; set => player_input_controller = value; }
     public PlayerMovementsController Player_movements_controller { get => player_movements_controller; set => player_movements_controller = value; }
     public PlayerFXController Player_fx_controller { get => player_fx_controller; set => player_fx_controller = value; }
     public PlayerAnimationsController Player_animations_controller { get => player_animations_controller; set => player_animations_controller = value; }
 
+    // find and load scripts
     public void LoadPlayer()
     {
         player_input = new PlayerInput();
@@ -43,13 +40,12 @@ public class PlayerScriptsLoader : MonoBehaviour
         InitPlayer();
     }
 
+    // initialize and connect scripts
     public void InitPlayer()
     {
         player_input_controller.Init(player_input, input_device);
         player_animations_controller.Init(player_animations);
         player_fx_controller.Init(player_fx);
         player_movements_controller.Init(player_movements, player_animations_controller, player_fx_controller, player_input_controller);
-
-        player_loaded = true;
     }
 }

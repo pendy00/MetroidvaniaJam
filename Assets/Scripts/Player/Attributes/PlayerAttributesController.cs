@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PlayerAttributesController : MonoBehaviour
 {
-    //private string life_points = "life points";
+    private string life_points = "life points";
     public int starting_life_points;
     public int max_life_point;
-    //private string exp_points = "experience points";
+    private string exp_points = "experience points";
     public int starting_exp_point;
     public int max_exp_point;
-    //private string level = "level";
+    private string level = "level";
     public int starting_level;
     public int max_level;
-    //private string lives = "lives";
+    private string lives = "lives";
     public int starting_lives;
     public int max_lives;
     private string strenght = "strenght";
@@ -43,6 +43,11 @@ public class PlayerAttributesController : MonoBehaviour
         player_attributes.Life_point.Max_value = starting_life_points; // set max life points in order to be able to update them
         this.player_attributes.UpdateAllMaxValues(max_life_point, max_exp_point, max_level, max_lives, max_strenght, max_constitution, max_intelligence, max_luck);
         this.player_attributes.UpdateAllValues(starting_life_points, 0, starting_level, starting_lives, strating_strenght, starting_constitution, starting_intelligence, starting_luck);
+
+        this.player_attributes.Life_point.Attribute_name = life_points;
+        this.player_attributes.Exp_point.Attribute_name = exp_points;
+        this.player_attributes.Level.Attribute_name = level;
+        this.player_attributes.Lives.Attribute_name = lives;
         this.player_attributes.Strenght.Attribute_name = strenght;
         this.player_attributes.Constitution.Attribute_name = constitution;
         this.player_attributes.Intelligence.Attribute_name = intelligence;
@@ -58,10 +63,9 @@ public class PlayerAttributesController : MonoBehaviour
     {
         player_attributes.Life_point.ChangeAttributeValue(value);
         player_stats_ui.UpdateLifeBeatUI(player_attributes.Life_point.Current_value);
+
         if(player_attributes.Life_point.Current_value <= 0)
-        {
             UpdateLives(-1);
-        }
     }
 
     public void UpdateLives(int value)
@@ -93,6 +97,14 @@ public class PlayerAttributesController : MonoBehaviour
         }
 
         player_stats_ui.Exp_bar_ui.UpdateExpBar(player_attributes.Exp_point.Current_value);
+    }
+
+    public void UpdateStats(int strenght, int constitution, int intelligence, int luck)
+    {
+        player_attributes.Strenght.ChangeAttributeValue(strenght);
+        player_attributes.Constitution.ChangeAttributeValue(constitution);
+        player_attributes.Intelligence.ChangeAttributeValue(intelligence);
+        player_attributes.Luck.ChangeAttributeValue(luck);
     }
 
     public void LevelUp()

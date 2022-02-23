@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// load and init all the attributes's required script to work properly
 public class AttributesScriptsLoader : MonoBehaviour
 {
     private PlayerLifeBeatUI player_life_beat_ui;
@@ -14,10 +15,7 @@ public class AttributesScriptsLoader : MonoBehaviour
     private PlayerStatsUI player_stats_ui;
     private PlayerAttributesController player_attributes_controller;
 
-    private bool attributes_loaded;
-
-    public bool Attributes_loaded { get => attributes_loaded; set => attributes_loaded = value; }
-
+    // find and load player scripts
     public void LoadAttributes()
     {
         player_life_beat_ui = ScriptsLoader.LoadScript<PlayerLifeBeatUI>();
@@ -32,10 +30,9 @@ public class AttributesScriptsLoader : MonoBehaviour
         player_attributes_controller = ScriptsLoader.LoadScript<PlayerAttributesController>();
 
         InitAttributes();
-
-        attributes_loaded = true;
     }
 
+    // initialize and connect scripts
     public void InitAttributes()
     {
         player_attributes.Init();

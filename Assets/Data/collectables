@@ -1,0 +1,4 @@
+{"MonoBehaviour":{"m_Enabled":true,"m_EditorHideFlags":0,"m_Name":"","m_EditorClassIdentifier":"","item_quantity":2}}
+{"MonoBehaviour":{"m_Enabled":true,"m_EditorHideFlags":0,"m_Name":"","m_EditorClassIdentifier":"","equipable_type":0,"level_equired":0,"life_points":100,"strenght":25,"constitution":25,"intelligence":25,"luck":25}}
+{"MonoBehaviour":{"m_Enabled":true,"m_EditorHideFlags":0,"m_Name":"","m_EditorClassIdentifier":"","item_quantity":3}}
+{"MonoBehaviour":{"m_Enabled":true,"m_EditorHideFlags":0,"m_Name":"","m_EditorClassIdentifier":"","item_quantity":5}}

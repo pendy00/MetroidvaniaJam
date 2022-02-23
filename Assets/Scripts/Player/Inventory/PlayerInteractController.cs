@@ -28,7 +28,7 @@ public class PlayerInteractController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("interactable"))
+        if (collision.gameObject.CompareTag("interactable"))
             interactable = collision.gameObject.GetComponent<Interactable>();
     }
 

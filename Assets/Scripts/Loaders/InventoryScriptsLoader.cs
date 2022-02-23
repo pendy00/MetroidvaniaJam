@@ -2,29 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// load and init all the inventory's required script to work properly
 public class InventoryScriptsLoader : MonoBehaviour
 {
-    private Inventory inventory;
-    private InventoryUI inventory_ui;
-    private InventoryController inventory_controller;
+    private PlayerInventory inventory;
+    private PlayerInventoryUI inventory_ui;
+    private PlayerInventoryController inventory_controller;
+
     private ItemLibrary item_library;
 
-    public InventoryController Inventory_controller { get => inventory_controller; }
-
-    private bool inventory_loaded;
-
-    public bool Inventory_loaded { get => inventory_loaded; set => inventory_loaded = value; }
-
+    // find and load scripts
     public void LoadInventory()
     {
-        inventory = ScriptsLoader.LoadScript<Inventory>();
-        inventory_ui = ScriptsLoader.LoadScript<InventoryUI>();
-        inventory_controller = ScriptsLoader.LoadScript<InventoryController>();
+        inventory = ScriptsLoader.LoadScript<PlayerInventory>();
+        inventory_ui = ScriptsLoader.LoadScript<PlayerInventoryUI>();
+        inventory_controller = ScriptsLoader.LoadScript<PlayerInventoryController>();
         item_library = ScriptsLoader.LoadScript<ItemLibrary>();
 
         InitInventory();
     }
 
+    // initialize and connect scripts
     public void InitInventory()
     {
         inventory_controller.Init(inventory, inventory_ui, item_library);

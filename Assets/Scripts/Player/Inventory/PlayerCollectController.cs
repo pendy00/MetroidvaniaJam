@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerCollectController : MonoBehaviour
 {
-    private CollectableObject collectable_object;
+    private GameItemUI game_item;
 
     private PlayerInputController player_input_controller;
-    private InventoryController inventory_controller;
+    private PlayerInventoryController inventory_controller;
 
 
-    public void Init(PlayerInputController player_input_controller, InventoryController inventory_controller)
+    public void Init(PlayerInputController player_input_controller, PlayerInventoryController inventory_controller)
     {
         this.player_input_controller = player_input_controller;
         this.inventory_controller = inventory_controller;
@@ -20,22 +20,22 @@ public class PlayerCollectController : MonoBehaviour
     {
         if (player_input_controller.Player_input.Action)
         {
-            if (collectable_object)
+            if (game_item)
             {
-                inventory_controller.AddItem(collectable_object.Collectable_values);
-                collectable_object.Collect();
+                inventory_controller.AddItem(game_item.Game_item);
+                game_item.Collect();
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("collectable"))
-            collectable_object = collision.gameObject.GetComponent<CollectableObject>();
+        if (collision.gameObject.CompareTag("collectable"))
+            game_item = collision.gameObject.GetComponent<GameItemUI>();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        collectable_object = null;
+        game_item = null;
     }
 }

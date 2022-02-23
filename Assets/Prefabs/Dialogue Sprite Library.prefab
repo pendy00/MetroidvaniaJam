@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8812880775163168684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8812880775163168682}
+  - component: {fileID: 8812880775163168685}
+  m_Layer: 0
+  m_Name: Dialogue Sprite Library
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8812880775163168682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8812880775163168684}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8812880775163168685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8812880775163168684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acfff200295d4dd45b91e5f2cd6dccd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cecile_afraid_1: {fileID: 21300000, guid: c02fecadb1c90194b990f45c7cc76c9b, type: 3}
+  cecile_serious: {fileID: 21300000, guid: 512006982ca8fd149a3026941e3a5453, type: 3}
+  cecile_speech_1: {fileID: 21300000, guid: f7c88bdf6a3cc2c489655e9587a11877, type: 3}
+  cecile_speech_2: {fileID: 21300000, guid: 6cac7b2a4d9a237439202ed563d1d922, type: 3}
+  cecile_stupor_1: {fileID: 21300000, guid: a4ba53f2683d0c34d817c8bddc959c9d, type: 3}
+  cecile_stupor_2: {fileID: 21300000, guid: 54f68370a3f169142b7409f88bfe8919, type: 3}
+  cecile_doubt_1: {fileID: 21300000, guid: 60d4d3e3a88579944acd05e8bce109ba, type: 3}
+  cecile_angry_1: {fileID: 21300000, guid: ab3ded4149a1f0c4c986e6f7eee5e532, type: 3}
+  cecile_angry_2: {fileID: 21300000, guid: 5c9f43a5a918e4f45beb1194e7e9afa9, type: 3}
+  cecile_angry_3: {fileID: 21300000, guid: f91572e7df99b4744a849353d2980c7d, type: 3}
+  cecile_angry_4: {fileID: 21300000, guid: 1b12b189b5118ce4a89c7570d6515f27, type: 3}
+  cecile_angry_5: {fileID: 21300000, guid: 482eb1fefbb5ea5458edc229fb8d43bd, type: 3}
+  cecile_jall_1: {fileID: 21300000, guid: ba4f0e1f8a3e8224796cd15db2970ced, type: 3}
+  cecile_jall_2: {fileID: 21300000, guid: 5aa2e41ac58534d45b8afba9a9e2ffdc, type: 3}
+  cecile_jall_3: {fileID: 21300000, guid: da0ce6060afa3234990d42b004039555, type: 3}
+  sebastiano_serious: {fileID: 21300000, guid: 1b9075e0dadfd3e45848564bc56b6ba8, type: 3}
+  sebastiano_speech_1: {fileID: 21300000, guid: 260cb4a0362e6464bb7d3b63eb5b67b8, type: 3}
+  sebastiano_speech_2: {fileID: 21300000, guid: 6cdcf657dd621384ba74cd2f9f72833a, type: 3}

@@ -20,7 +20,7 @@ public class PlayerAttributes
     public Attribute Intelligence { get => intelligence; set => intelligence = value; }
     public Attribute Luck { get => luck; set => luck = value; }
 
-    //initializing values
+    //instantiating values
     public void Init()
     {
         life_point = new Attribute();

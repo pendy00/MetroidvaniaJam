@@ -2,31 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// load and init all the interactions's required script to work properly
 public class InteractionsScriptsLoader : MonoBehaviour
 {
     private PlayerCollectController player_collect_controller;
     private PlayerInteractController player_interact_controller;
     private PlayerInputController player_input_controller;
-    private InventoryController inventory_controller;
+    private PlayerInventoryController inventory_controller;
 
-    private bool interaction_loaded;
-
-    public bool Interaction_loaded { get => interaction_loaded; set => interaction_loaded = value; }
     public PlayerCollectController Player_collect_controller { get => player_collect_controller; set => player_collect_controller = value; }
     public PlayerInteractController Player_interact_controller { get => player_interact_controller; set => player_interact_controller = value; }
 
+    // find and load scripts
     public void LoadInteractions()
     {
         player_collect_controller = ScriptsLoader.LoadScript<PlayerCollectController>();
         player_interact_controller = ScriptsLoader.LoadScript<PlayerInteractController>();
         player_input_controller = ScriptsLoader.LoadScript<PlayerInputController>();
-        inventory_controller = ScriptsLoader.LoadScript<InventoryController>();
+        inventory_controller = ScriptsLoader.LoadScript<PlayerInventoryController>();
 
         InitInteractions();
-
-        interaction_loaded = true;
     }
 
+    // initialize and connect scripts
     public void InitInteractions()
     {
         player_collect_controller.Init(player_input_controller, inventory_controller);

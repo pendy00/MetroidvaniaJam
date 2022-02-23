@@ -9,6 +9,7 @@ TagManager:
   - player
   - consumable
   - collectable
+  - equipable
   layers:
   - Default
   - TransparentFX

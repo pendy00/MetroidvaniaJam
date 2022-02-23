@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class EquipableTypes : MonoBehaviour
 {
-    public enum EQUIPABLE_TYPE { WEAPON, ARMOR, ACCESSORY}
+    public enum EQUIPABLE_TYPES { WEAPON, ARMOR, ACCESSORY};
 }

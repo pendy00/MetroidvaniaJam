@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// manage player's attribute menu tab
 public class PlayerAttributesMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // TODO separate attributes UI with proper menu tab and in scene UI
+    // TODO replace StatUI for better dependency and hierarchy controll
 }
